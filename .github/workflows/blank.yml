@@ -20,7 +20,7 @@ jobs:
         password: ${{ secrets.YoLo1204 }}
 
     - name: Build Docker image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/your-image-name:latest .
+      run: docker build -t ${{ secrets.Littlebigchannel }}/your-image-name:latest .
 
     - name: Push Docker image to DockerHub
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/your-image-name:latest
+      run: docker push ${{ secrets.YoLo1204 }}/your-image-name:latest
