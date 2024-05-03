@@ -1,8 +1,11 @@
 name: Publish Docker image
 
 on:
+  push:
+    branches:
+      - master
   schedule:
-    - cron: '* * * * *'  # Запускать каждую минуту
+    - cron: '*/1 * * * *' # Запуск каждую минуту
 
 jobs:
   publish:
