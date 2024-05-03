@@ -1,9 +1,8 @@
 name: Publish Docker image
 
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: '* * * * *'  # Запускать каждую минуту
 
 jobs:
   publish:
@@ -20,5 +19,6 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t littlebigchannel/micro:latest .
+          docker build -t myapp .
+          docker tag myapp:latest littlebigchannel/micro:latest
           docker push littlebigchannel/micro:latest
