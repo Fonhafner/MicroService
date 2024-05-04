@@ -18,9 +18,10 @@ jobs:
       with:
         python-version: '3.x'
       
+    - name: Install dependencies
+      run: pip install -r requirements.txt
 
     - name: Run database manager tests
-      run: pip install pytest
       run: pytest test_database_manager.py
 
   build-and-push:
