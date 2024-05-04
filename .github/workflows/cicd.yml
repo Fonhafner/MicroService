@@ -20,6 +20,7 @@ jobs:
       
 
     - name: Run database manager tests
+      run: pip install pytest
       run: pytest test_database_manager.py
 
   build-and-push:
