@@ -21,12 +21,11 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y python3-pip
-          pip install -r ./services/Authenticate_user/requirements.txt
-          pip install -r ./services/Contacts/requirements.txt
+          pip install -r requirements.txt
       - name: Run unit tests
         run: |
-          python ./services/Authenticate_user/test.py
-          python -m pytest ./services/Contacts/text.py
+          python test_database_manager.py
+          python test_showusers.py
 
  build-and-push:
     runs-on: ubuntu-latest
@@ -47,41 +46,3 @@ jobs:
           docker-compose build
           docker-compose push
 
-
- build-and-push-to-yc:
-    name: Build and push to YandexCloud Registry
-    runs-on: ubuntu-latest
-    needs: [test]
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Build docker image
-        run: |
-          docker build  -f ./services/chat_service/Dockerfile ./services/chat_service/ --tag cr.yandex/${{ secrets.YC_REGISTRY_ID }}/chat-service:latest
-
-      - name: Login to YC Registry
-        uses: docker/login-action@v3.0.0
-        with:
-          registry: cr.yandex
-          username: json_key
-          password: ${{ secrets.YC_KEYS }}
-
-      - name: Push tag YC Registry
-        run: |
-          docker push cr.yandex/${{ secrets.YC_REGISTRY_ID }}/chat-service:latest
-
- deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    needs: [build-and-push-to-yc]
-    steps:
-      - name: Deploy serverless container
-        uses: yc-actions/yc-sls-container-deploy@v1
-        with:
-          yc-sa-json-credentials: ${{ secrets.YC_KEYS }}
-          container-name: ${{ secrets.YC_CONTAINER_NAME }}
-          folder-id: ${{ secrets.YC_FOLDER_ID }}
-          revision-image-url: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/chat-service:latest
-          revision-service-account-id: ${{ secrets.YC_SA_ID }}
-            #revision-env: |
-            #POSTGRES_URL=${{ secrets.ENV_POSTGRES_URL }}
