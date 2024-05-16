@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: keycloak
+Version: 3.1.4
+Summary: Python client for Keycloak IAM
+Author: Akhil Lawrence
+Author-email: akhilputhiry@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Provides-Extra: docs
+Provides-Extra: extensions
+Requires-Dist: Django (>=5.0.1,<6.0.0) ; extra == "extensions"
+Requires-Dist: Flask (>=3.0.1,<4.0.0) ; extra == "extensions"
+Requires-Dist: PyYAML (>=6.0.1,<7.0.0)
+Requires-Dist: Sphinx (>=7.2.6,<8.0.0) ; extra == "docs"
+Requires-Dist: cached-property (>=1.5.2,<2.0.0)
+Requires-Dist: httpx (>=0.26.0,<0.27.0)
+Requires-Dist: python-jose[cryptography] (>=3.3.0,<4.0.0)
+Requires-Dist: sphinx-rtd-theme (>=2.0.0,<3.0.0) ; extra == "docs"
+Requires-Dist: starlette (>=0.36.1,<0.37.0) ; extra == "extensions"
+Requires-Dist: uvicorn (>=0.27.0,<0.28.0) ; extra == "extensions"

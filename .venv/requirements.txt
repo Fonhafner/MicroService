@@ -1,0 +1,12 @@
+fastapi==0.68.0
+uvicorn==0.15.0
+jinja2==3.0.3
+passlib==1.7.4
+requests==2.26.0
+python-multipart==0.0.9
+python-keycloak
+asyncpg
+mock
+pytest
+prometheus-fastapi-instrumentator
+psycopg2-binary

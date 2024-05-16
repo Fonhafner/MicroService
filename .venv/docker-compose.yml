@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  micro:
+    build:
+      context: .
+      dockerfile: Dockerfile.micro
+    ports:
+      - "8000:8000"
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://postgres:yolo1204@87.242.119.51:5432/microbase
+
+  showusers:
+    build:
+      context: .
+      dockerfile: Dockerfile.showusers
+    ports:
+      - "8001:8001"
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://postgres:yolo1204@87.242.119.51:5432/microbase

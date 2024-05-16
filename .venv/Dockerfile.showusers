@@ -1,0 +1,24 @@
+# Dockerfile для сервиса showusers
+
+# Указываем базовый образ
+FROM python:3.9-slim AS base
+
+# Устанавливаем рабочую директорию
+WORKDIR /app
+
+# Копируем файлы с зависимостями
+COPY showusers.py .
+COPY requirements.txt .
+COPY database_manager.py .
+
+# Копируем HTML файлы и стили
+COPY templates /app/templates
+
+# Устанавливаем необходимые зависимости
+RUN apt-get update && apt-get install -y gcc
+RUN pip install --no-cache-dir aiofiles
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install fastapi uvicorn
+
+# Команда для запуска микросервиса
+CMD ["uvicorn", "showusers:app", "--host", "0.0.0.0", "--port", "8001"]

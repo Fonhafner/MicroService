@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Conversations</h2>
+            <ul>
+                <li><a href="#">User 1</a></li>
+                <li><a href="#">User 2</a></li>
+                <li><a href="#">User 3</a></li>
+                <!-- Добавьте других пользователей по мере необходимости -->
+            </ul>
+            <button onclick="openProfile()">Profile</button>
+            <button onclick="showAllUsers()">All Users</button> <!-- Добавлена кнопка "Все пользователи" -->
+        </div>
+        <div class="main">
+            <h1>Messages</h1>
+            <!-- Здесь будут отображаться сообщения с выбранным пользователем -->
+        </div>
+    </div>
+
+    <script>
+        function openProfile() {
+            // Здесь можно добавить логику для открытия профиля пользователя
+            alert("Open Profile");
+        }
+
+        function showAllUsers() {
+            window.location.href = "http://localhost:8001/users"; // Перенаправление на страницу с пользователями
+        }
+
+        function logout() {
+            document.cookie = 'username=; Max-Age=-99999999;';
+            window.location.replace("/login");
+        }
+    </script>
+    <button onclick="logout()">Logout</button>
+</body>
+</html>
