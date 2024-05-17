@@ -10,12 +10,12 @@ WORKDIR /app
 COPY Micro.py .
 COPY requirements.txt .
 COPY database_manager.py .
-COPY static /app/static
+COPY ./.venv/static /app/static
 
 # Копируем HTML файлы
-COPY static/login.html /app/static
-COPY static/register.html /app/static
-COPY static/main.html /app/static
+COPY ./.venv/static/login.html /app/static
+COPY ./.venv/static/register.html /app/static
+COPY ./.venv/static/main.html /app/static
 
 # Устанавливаем необходимые зависимости, включая aiofiles
 RUN apt-get update && apt-get install -y gcc
