@@ -10,3 +10,5 @@ mock
 pytest
 prometheus-fastapi-instrumentator
 psycopg2-binary
+jose
+python-jose

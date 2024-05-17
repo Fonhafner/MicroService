@@ -1,23 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ff7f50; /* Оранжевый фон */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            padding: 10px;
+            background-color: #ff6347; /* Красный цвет кнопок */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #ff4500; /* Изменение цвета при наведении */
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Login</h1>
         <form action="/login" method="post">
-            <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username" required><br>
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" required><br><br>
-            <button type="submit">Login</button> <!-- Заменим input на button -->
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
         </form>
         <p>Don't have an account? <a href="/register">Register here</a></p>
-        <p>Login with Keycloak: <a href="http://0.0.0.0:8080/auth/realms/Micro/protocol/openid-connect/auth?client_id=WebAppClient&response_type=code&redirect_uri=http://localhost:8000/main">Keycloak Login</a></p>
+        <p>Login with Keycloak: <a href="http://localhost:8002/keycloak_login">Keycloak Login</a></p>
     </div>
 </body>
+
 </html>

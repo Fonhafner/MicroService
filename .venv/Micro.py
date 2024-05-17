@@ -1,13 +1,14 @@
+import os
+import logging
+from pathlib import Path
+
 from fastapi import FastAPI, HTTPException, Form, Request
 from fastapi.responses import HTMLResponse, RedirectResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from passlib.context import CryptContext
 from pydantic import BaseModel
-from pathlib import Path
+
 from database_manager import PostgreSQLDatabase
-import asyncpg
-import logging
-import os
 
 # Настройка базовой конфигурации логирования
 logging.basicConfig(level=logging.INFO)
@@ -46,7 +47,7 @@ async def register(username: str = Form(...), email: str = Form(...), password: 
 async def login(request: Request, username: str = Form(...), password: str = Form(...)):
     logging.info("Trying to log in user: %s", username)  # Запись информации о попытке входа
     user = await db.get_user_by_username(username)
-    if not user or not pwd_context.verify(password, user["passwd"]):
+    if not user or not pwd_context.verify(password, user["passwd"]):  # Исправлено на "passwd"
         raise HTTPException(status_code=401, detail="Invalid username or password")
 
     # Если аутентификация успешна, устанавливаем cookie с именем пользователя

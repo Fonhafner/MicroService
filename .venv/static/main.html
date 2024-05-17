@@ -1,22 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
-    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #20b2aa; /* Цвет бака */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 800px;
+            height: 500px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            width: 200px;
+            padding: 20px;
+            background-color: #f08080; /* Цвет боковой панели */
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main {
+            flex: 1;
+            padding: 20px;
+            background-color: #f0e68c; /* Цвет основной области */
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #20b2aa; /* Изменение цвета при наведении на ссылку */
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #20b2aa; /* Яркий цвет кнопок */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff4500; /* Изменение цвета при наведении на кнопку */
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
         <div class="sidebar">
-            <h2>Conversations</h2>
-            <ul>
-                <li><a href="#">User 1</a></li>
-                <li><a href="#">User 2</a></li>
-                <li><a href="#">User 3</a></li>
-                <!-- Добавьте других пользователей по мере необходимости -->
-            </ul>
-            <button onclick="openProfile()">Profile</button>
+            <!-- Убраны ссылки на пользователей -->
             <button onclick="showAllUsers()">All Users</button> <!-- Добавлена кнопка "Все пользователи" -->
         </div>
         <div class="main">
@@ -26,11 +101,6 @@
     </div>
 
     <script>
-        function openProfile() {
-            // Здесь можно добавить логику для открытия профиля пользователя
-            alert("Open Profile");
-        }
-
         function showAllUsers() {
             window.location.href = "http://localhost:8001/users"; // Перенаправление на страницу с пользователями
         }
@@ -42,4 +112,5 @@
     </script>
     <button onclick="logout()">Logout</button>
 </body>
+
 </html>

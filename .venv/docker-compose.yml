@@ -10,7 +10,8 @@ services:
     restart: always
     environment:
       DATABASE_URL: postgresql://postgres:yolo1204@87.242.119.51:5432/microbase
-
+    networks:
+      - app-network
   showusers:
     build:
       context: .
@@ -20,3 +21,22 @@ services:
     restart: always
     environment:
       DATABASE_URL: postgresql://postgres:yolo1204@87.242.119.51:5432/microbase
+    networks:
+      - app-network
+  keycloakauth:
+    build:
+      context: .
+      dockerfile: Dockerfile.keycloakauth
+    ports:
+      - "8002:8002"
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://postgres:yolo1204@87.242.119.51:5432/microbase
+    networks:
+      - app-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  app-network:
+    driver: bridge
