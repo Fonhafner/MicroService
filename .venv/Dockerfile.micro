@@ -7,9 +7,9 @@ FROM python:3.9-slim AS base
 WORKDIR /app
 
 # Копируем файлы с зависимостями
-COPY Micro.py .
-COPY requirements.txt .
-COPY database_manager.py .
+COPY ./.venv/Micro.py .
+COPY ./.venv/requirements.txt .
+COPY ./.venv/database_manager.py .
 COPY ./.venv/static /app/static
 
 # Копируем HTML файлы
